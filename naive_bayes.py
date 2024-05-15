@@ -9,24 +9,22 @@ class NaiveBayesClassifier:
         self.prob_table = None
         self.features = None
 
-    def fit(self, training_set):
+    def fit(self, training_set, feature_domains):
         self.features = training_set.drop(columns=['class']).columns
-        self._train(training_set)
+        self._train(training_set, feature_domains)
         return self
 
-    def _initialise_unique_feature_class_combos(self, class_domain, training_set):
+    def _initialise_unique_feature_class_combos(self, class_domain, feature_domains, training_set):
         # Log all unique combinations of features, feature_values and class_labels into dictionary and get domains
         # of all features
-        feature_domains = {}
+        feature_values = {}
         count = {}
         for y in class_domain:
             count[y] = 1  # Initialize count numbers to 1
 
             for feature in self.features:
-                feature_domain = set(training_set[feature])
-                feature_domains[feature] = feature_domain
-
-                for xi in feature_domain:
+                feature_values[feature] = set(training_set[feature]) if feature not in feature_domains.keys() else feature_domains[feature]
+                for xi in feature_domains[feature]:
                     count[(feature, xi, y)] = 1
         return count, feature_domains
 
@@ -67,13 +65,13 @@ class NaiveBayesClassifier:
 
         self.prob_table = prob_table
 
-    def _train(self, training_set):
+    def _train(self, training_set, feature_domains):
         # Initialise feature domain info storage
         self.class_domain = set(training_set['class'])
 
         # Log all unique combinations of features, feature_values and class_labels into dictionary and get domains
         # of all features
-        count, feature_domains = self._initialise_unique_feature_class_combos(self.class_domain, training_set)
+        count, feature_domains = self._initialise_unique_feature_class_combos(self.class_domain, feature_domains, training_set)
 
         # Count the number of each class and feature_value pairs based on the training instances
         count = self._populate_count_dict_with_train_data(count, training_set)
@@ -159,22 +157,22 @@ def main(training_file, test_file):
     # Load training data
     train_data = pd.read_csv('A3_part1data/' + training_file)
     training_data = train_data.drop(columns=['Unnamed: 0'])  # Remove the instance ID column from the training data
-    # feature_values = {
-    #     'age': ['10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99'],
-    #     'menopause': ['lt40', 'ge40', 'premeno'],
-    #     'tumor-size': ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54',
-    #                    '55-59'],
-    #     'inv-nodes': ['0-2', '3-5', '6-8', '9-11', '12-14', '15-17', '18-20', '21-23', '24-26', '27-29', '30-32',
-    #                   '33-35', '36-39'],
-    #     'node-caps': ['yes', 'no'],
-    #     'deg-malig': ['1', '2', '3'],
-    #     'breast': ['left', 'right'],
-    #     'breast-quad': ['left up', 'left low', 'right up', 'right low', 'central'],
-    #     'irradiat': ['yes', 'no']
-    # }
+    feature_values = {
+        'age': ['10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90-99'],
+        'menopause': ['lt40', 'ge40', 'premeno'],
+        'tumor-size': ['0-4', '5-9', '10-14', '15-19', '20-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54',
+                       '55-59'],
+        'inv-nodes': ['0-2', '3-5', '6-8', '9-11', '12-14', '15-17', '18-20', '21-23', '24-26', '27-29', '30-32',
+                      '33-35', '36-39'],
+        'node-caps': ['yes', 'no'],
+        'deg-malig': [1, 2, 3],
+        'breast': ['left', 'right'],
+        'breast-quad': ['left_up', 'left_low', 'right_up', 'right_low', 'central'],
+        'irradiat': ['yes', 'no']
+    }
 
     # Initialize and train the Naive Bayes classifier
-    nb_classifier = NaiveBayesClassifier().fit(training_data)
+    nb_classifier = NaiveBayesClassifier().fit(training_data, feature_values)
     print_feature_probabilities(nb_classifier.prob_table)
 
     # Load test data
