@@ -1,24 +1,54 @@
 Printing Test Data Results...
 ===========================================
 Predictions:
-Instance No. 189: recurrence-events
-	--- Score: {'no-recurrence-events': 4.225449295343082e-06, 'recurrence-events': 7.95733952513876e-06}
-Instance No. 190: no-recurrence-events
-	--- Score: {'no-recurrence-events': 0.00035090896541482136, 'recurrence-events': 2.917691159217544e-05}
-Instance No. 191: no-recurrence-events
-	--- Score: {'no-recurrence-events': 4.950751020419909e-05, 'recurrence-events': 1.0893302834424374e-06}
-Instance No. 192: no-recurrence-events
-	--- Score: {'no-recurrence-events': 0.00015947302312979033, 'recurrence-events': 1.145856891619981e-05}
-Instance No. 193: no-recurrence-events
-	--- Score: {'no-recurrence-events': 4.569885534557127e-06, 'recurrence-events': 2.153533950851044e-06}
-Instance No. 194: no-recurrence-events
-	--- Score: {'no-recurrence-events': 0.0006310330377608908, 'recurrence-events': 4.351027225465415e-05}
-Instance No. 195: no-recurrence-events
-	--- Score: {'no-recurrence-events': 0.00021783648604782526, 'recurrence-events': 8.314945855647813e-05}
-Instance No. 274: no-recurrence-events
-	--- Score: {'no-recurrence-events': 0.00033133672335758455, 'recurrence-events': 1.0018390240701734e-05}
-Instance No. 275: recurrence-events
-	--- Score: {'no-recurrence-events': 4.114665927685032e-05, 'recurrence-events': 7.270264415795743e-05}
-Instance No. 276: recurrence-events
-	--- Score: {'no-recurrence-events': 4.313762666121404e-05, 'recurrence-events': 5.923919153611345e-05}
+Instance No. 189
+Actual Class: no-recurrence-events
+Prediction: recurrence-events
+Score: {'recurrence-events': 7.95733952513876e-06, 'no-recurrence-events': 4.225449295343082e-06}
+
+Instance No. 190
+Actual Class: no-recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 2.917691159217544e-05, 'no-recurrence-events': 0.00035090896541482136}
+
+Instance No. 191
+Actual Class: no-recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 1.0893302834424374e-06, 'no-recurrence-events': 4.950751020419909e-05}
+
+Instance No. 192
+Actual Class: no-recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 1.145856891619981e-05, 'no-recurrence-events': 0.00015947302312979033}
+
+Instance No. 193
+Actual Class: no-recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 2.153533950851044e-06, 'no-recurrence-events': 4.569885534557127e-06}
+
+Instance No. 194
+Actual Class: no-recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 4.351027225465415e-05, 'no-recurrence-events': 0.0006310330377608908}
+
+Instance No. 195
+Actual Class: no-recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 8.314945855647813e-05, 'no-recurrence-events': 0.00021783648604782526}
+
+Instance No. 274
+Actual Class: recurrence-events
+Prediction: no-recurrence-events
+Score: {'recurrence-events': 1.0018390240701734e-05, 'no-recurrence-events': 0.00033133672335758455}
+
+Instance No. 275
+Actual Class: recurrence-events
+Prediction: recurrence-events
+Score: {'recurrence-events': 7.270264415795743e-05, 'no-recurrence-events': 4.114665927685032e-05}
+
+Instance No. 276
+Actual Class: recurrence-events
+Prediction: recurrence-events
+Score: {'recurrence-events': 5.923919153611345e-05, 'no-recurrence-events': 4.313762666121404e-05}
+
 Test accuracy is 80.00%

@@ -1,6 +1,5 @@
 # Name: Rhea D'Souza
-# Username:
-# UID: 300617012
+# Username: dsouzrhea
 
 import pandas as pd
 import sys
@@ -133,7 +132,7 @@ def test_and_accuracy(train_or_test: str, nb_classifier: NaiveBayesClassifier, t
     print("Predictions:")
     for _, test_instance in test_data.iterrows():
         class_score, prediction = nb_classifier.predict(test_instance)
-        print(f"Instance No. {test_instance['Unnamed: 0']}: {prediction} \n\t--- Score: {class_score}")
+        print(f"Instance No. {test_instance['Unnamed: 0']}\nActual Class: {test_instance['class']}\nPrediction: {prediction}\nScore: {class_score}\n")
 
         accuracy += prediction == test_instance['class']
 
